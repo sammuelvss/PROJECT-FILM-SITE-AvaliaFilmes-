@@ -1,0 +1,270 @@
+ /* --- Reset Básico e Estilos Gerais --- */
+* {
+     margin: 0;
+     padding: 0;
+     box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    background-color: #141414; /* Fundo escuro, estilo streaming */
+    color: #ffffff;
+    }
+
+a {
+    text-decoration: none;
+    color: inherit; /* Links herdam a cor do elemento pai */
+    transition: color 0.3s;
+    }
+
+ul {
+    list-style: none;
+    }
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    }
+
+        /* --- Cabeçalho e Navegação --- */
+.main-header {
+    background-color: #000000;
+    padding: 1rem 2rem;
+    border-bottom: 3px solid darkred;
+    }
+
+.main-header .logo h1 {
+    font-size: 1.75rem;
+    font-weight: bold;
+    text-align: center;
+    }
+
+.main-header .logo .logo-yellow {
+    color: #f9f355;
+    }
+
+.main-header .logo .logo-white {
+    color: #ffffff;
+    }
+
+        /* --- Menu de Gêneros --- */
+.genre-nav {
+    background-color: #1f1f1f;
+    padding: 0.75rem 0;
+    border-bottom: 1px solid #333;
+    }
+
+.genre-nav .nav-list {
+    display: flex; /* Usa flexbox para alinhar os itens */
+    justify-content: center; /* Centraliza os itens no container */
+    gap: 2rem; /* Espaçamento entre os itens */
+    font-size: 1rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    }
+        
+.genre-nav .nav-list a:hover,
+.genre-nav .nav-list a.active {
+    color: #f9f355; /* Cor de destaque ao passar o mouse ou na página ativa */
+    }
+        
+        /* --- Conteúdo Principal --- */
+main {
+    padding: 2rem 1rem; /* Espaçamento interno */
+    }
+
+.page-title {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    }
+
+        /* --- Grade de Filmes --- */
+.movies-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); /* Grade responsiva */
+    gap: 1.5rem;
+    max-width: 1200px;
+    margin: 0 auto; /* Centraliza a grade */
+    opacity: 0,8;
+    transition: 0.9s;
+    border-radius: 30px;
+    }
+   .movies-grid img:hover{
+    transform: scale(1.3);
+     transition: 0.10s;
+      border-radius: 30px;
+   }
+
+.movie-card {
+    background-color: #222;
+    border-radius: 8px;
+    overflow: hidden; /* Garante que a imagem não saia do card */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.5);
+    display: flex;
+    flex-direction: column;
+    }
+
+.movie-card img {
+    width: 100%;
+    height: 350px; /* Altura fixa para os pôsteres */
+    object-fit: cover; /* Garante que a imagem cubra o espaço sem distorcer */
+    }
+    
+
+.movie-info {
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centraliza o conteúdo de informações */
+    flex-grow: 1;
+    }
+
+        /* --- Sistema de Avaliação por Estrelas --- */
+.star-rating {
+    display: flex;
+    flex-direction: row-reverse; /* Inverte a ordem para a mágica do CSS funcionar */
+    justify-content: center;
+    margin-bottom: 0.5rem;
+    }
+
+.star-rating input[type="radio"] {
+    display: none; /* Esconde os botões de rádio originais */
+    }
+
+.star-rating label {
+    font-size: 2rem;
+    color: #991f1f;
+    cursor: pointer;
+    transition: color 0.2s;
+    }
+        
+/*  Pinta as estrelas que vêm ANTES da estrela com mouse em cima */
+.star-rating:not(:hover) input:checked ~ label,
+.star-rating:hover input:hover ~ label {
+    color: orange;
+    }
+        
+/* Pinta a própria estrela com mouse em cima */
+.star-rating input:hover ~ label,
+.star-rating input:checked ~ label,
+b {
+    color: orange;
+    }
+
+.rating-result {
+    font-size: 0.9rem;
+    color: #aaa;
+    height: 1.2rem; /* Altura fixa para não "pular" o layout */
+    text-align: center;
+    }
+
+/* --- Rodapé --- */
+.main-footer {
+    text-align: center;
+    padding: 2rem 1rem;
+    margin-top: 2rem;
+    background-color: #000000;
+    border-top: 1px solid #333;
+    }
+.main-footer h2 {
+    margin-bottom: 0.5rem;
+    }
+
+.section-title {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    padding-left: 1rem;
+    border: 4px solid rgb(37, 31, 31);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    
+    }
+
+.top-rated-section {
+    display: flex;
+    gap: 1.5rem;
+    overflow-x: auto; /* Permite scroll horizontal em telas menores */
+    padding-bottom: 1.5rem; /* Espaço para a barra de scroll */
+    margin-bottom: 3rem;
+   justify-content: center;
+    }
+
+.top-rated-card {
+    background-color: #222;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.5);
+    min-width: 280px; /* Largura mínima do card */
+    text-align: center;
+    }
+        
+.top-rated-card img {
+    width: 100%;
+    height: 180px;
+    object-fit: scale-down;
+    }
+
+.top-rated-info {
+    padding: 1rem;
+    }
+
+.top-rated-info h3 {
+    font-size: 1.25rem;
+    margin-bottom: 0.75rem;
+    }
+
+.call-to-action {
+    background-color: #e03131;
+    color: white;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    display: block;
+    width: 100%;
+    }
+
+.call-to-action:hover {
+    background-color: #c92a2a;
+    }
+
+/* --- Grade de Serviços de Streaming --- */
+.streaming-services-grid {
+    display: flex;
+    flex-wrap: wrap; /* Permite que os itens quebrem para a próxima linha */
+    justify-content: center;
+    gap: 2rem;
+    }
+
+.service-card {
+    background-color: #222;
+    border-radius: 12px;
+    padding: 1.5rem;
+    width: 220px;
+    text-align: center;
+    transition: transform 0.3s, box-shadow 0.3s;
+    border: 1px solid #333;
+    }
+        
+.service-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+    }
+
+.service-card img {
+    height: 80px; /* Altura fixa para os logos */
+    width: auto;
+    margin: 0 auto 1rem auto;
+    object-fit: contain; /* Garante que o logo caiba sem distorcer */
+    }
+        
+.service-card .service-name {
+    font-size: 1.2rem;
+    font-weight: 600;
+    }
