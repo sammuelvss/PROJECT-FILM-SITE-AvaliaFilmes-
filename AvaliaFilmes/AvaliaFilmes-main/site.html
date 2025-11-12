@@ -3,12 +3,21 @@
 <head>
 <link rel="stylesheet" href="style.css">
 <title>AvaliaFilmes</title>
+<script src="https://cdn.tailwindcss.com"></script>
+
+<script>
+  tailwind.config = {
+    corePlugins: {
+      preflight: false
+    }
+  }
+</script>
 </head>
 <body>
 
     <header class="main-header">
-        <a href="site.html" class="logo">
-            <h1>
+        <a href="#" class="logo">
+            <h1 class="hover:scale-105">
                 <span class="logo-yellow">Avalia</span><span class="logo-white">FILMES</span>
             </h1>
         </a>
@@ -32,24 +41,48 @@
                 <div class="top-rated-card">
                     <img src="titanic.png" alt="Banner de Titanic">
                     <div class="top-rated-info">
-                        <h3>Titanic <b>★★★★★</b> </h3>
-                        <a href="assistir.html"><button class="call-to-action">Saiba Onde Assistir</button></a>
+                        <h3>Titanic<p><b>★★★★★</b> </h3>
+                        <a href="assistir.html"><button class="bg-red-900 rounded-xl py-2 px-4  hover:bg-red-700 text-white font-bold border-transparent hover:scale-105 active:scale-95">Saiba Onde Assistir</button></a>
                     </div>
                 </div>
 
                 <div class="top-rated-card">
                     <img src="shrek.png" alt="Banner de Shrek">
                     <div class="top-rated-info">
-                        <h3>Shrek <b>★★★★</b></h3>
-                        <a href="assistir.html"><button class="call-to-action">Saiba Onde Assistir</button></a>
+                        <h3>Shrek <p><b>★★★★</b></h3>
+                        <a href="assistir.html"><button class="bg-red-900 rounded-xl py-2 px-4  hover:bg-red-700 text-white font-bold border-transparent hover:scale-105 active:scale-95">Saiba Onde Assistir</button></a>
                     </div>
                 </div>
 
                 <div class="top-rated-card">
                     <img src="itacoisa.png" alt="Banner de IT: A Coisa">
                      <div class="top-rated-info">
-                        <h3>IT: A Coisa <b>★★★★</b></h3>
-                        <a href="assistir.html"><button class="call-to-action">Saiba Onde Assistir</button></a>
+                        <h3>IT: A Coisa <p><b>★★★★</b></h3>
+                        <a href="assistir.html"><button class="bg-red-900 rounded-xl py-2 px-4  hover:bg-red-700 text-white font-bold border-transparent hover:scale-105 active:scale-95">Saiba Onde Assistir</button></a>
+                    </div>
+                </div>
+
+                 <div class="top-rated-card">
+                    <img src="sinners.png" alt="Banner de Titanic">
+                    <div class="top-rated-info">
+                        <h3>Pecadores <p><b>★★★★★</b> </h3>
+                        <a href="assistir.html"><button class="bg-red-900 rounded-xl py-2 px-4  hover:bg-red-700 text-white font-bold border-transparent hover:scale-105 active:scale-95">Saiba Onde Assistir</button></a>
+                    </div>
+                </div>
+
+                 <div class="top-rated-card">
+                    <img src="aindaEstou.png" alt="Banner de Titanic">
+                    <div class="top-rated-info">
+                        <h3>Ainda Estou Aqui <p><b>★★★★★</b> </h3>
+                        <a href="assistir.html"><button class="bg-red-900 rounded-xl py-2 px-4  hover:bg-red-700 text-white font-bold border-transparent hover:scale-105 active:scale-95">Saiba Onde Assistir</button></a>
+                    </div>
+
+                </div>
+                 <div class="top-rated-card">
+                    <img src="wicked.png" alt="Banner de Titanic">
+                    <div class="top-rated-info">
+                        <h3>Wicked: Parte 2 <p><b>★★★★</b> </h3>
+                        <a href="assistir.html"><button class="bg-red-900 rounded-xl py-2 px-4  hover:bg-red-700 text-white font-bold border-transparent hover:scale-105 active:scale-95">Saiba Onde Assistir</button></a>
                     </div>
                 </div>
 
@@ -73,9 +106,10 @@
     </main>
     
     <footer class="main-footer">
-        <h2>AvaliaFILMES</h2>
-        <p>@unicap.oficial</p>
+        <h2>AvaliaFILMES</h2> 
+        <a class="text-blue-500 hover:text-blue-300 hover:underline" href="https://github.com/sammuelvss">Meu Github</a>
+        
     </footer>
-
+    
 </body>
 </html>

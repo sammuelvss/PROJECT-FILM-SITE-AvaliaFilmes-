@@ -26,12 +26,28 @@ img {
     height: auto;
     display: block;
     }
+::-webkit-scrollbar {
+        width: 6px; /* Largura da barra */
+      }
 
+      ::-webkit-scrollbar-track {
+        /* Cor do "trilho" (fundo) */
+        background: #000000; /* Ex: Cor 'gray-800' */
+      }
+
+      ::-webkit-scrollbar-thumb {
+        /* Cor da "alça" (o que você arrasta) */
+        background: #782b2b; 
+        border-radius: 9999px; 
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: #a44646; 
+      }
         /* --- Cabeçalho e Navegação --- */
 .main-header {
     background-color: #000000;
     padding: 1rem 2rem;
-    border-bottom: 3px solid darkred;
+    border-bottom: 3px solid rgba(244, 244, 244, 0.315);
     }
 
 .main-header .logo h1 {
@@ -92,26 +108,47 @@ main {
     opacity: 0,8;
     transition: 0.9s;
     border-radius: 30px;
+    
+    }
+
+    .movies-grid img {
+    width: 100%;
+    height: 350px; 
+    object-fit: 3rem; 
+    margin-top: 9px;
+    margin-right: 16px;
+    border-radius: 30px;
+    box-shadow: 0 0 0px rgba(59, 130, 246, 0); 
+    transition: box-shadow 1000ms ease-out, 
+                transform 300ms ease-out,
+                background-color 300ms ease-out;
+       
     }
    .movies-grid img:hover{
-    transform: scale(1.3);
-     transition: 0.10s;
-      border-radius: 30px;
+    transform: translateY(-10px);
+    border-radius: 30px;
+    box-shadow: 0 0 15px rgba(191, 191, 191, 0.361),
+    0 0 30px rgba(110, 110, 110, 0.274);
+
    }
 
 .movie-card {
     background-color: #222;
-    border-radius: 8px;
+    border-radius: 30px;
     overflow: hidden; /* Garante que a imagem não saia do card */
     box-shadow: 0 4px 8px rgba(0,0,0,0.5);
     display: flex;
     flex-direction: column;
+    
     }
 
 .movie-card img {
     width: 100%;
     height: 350px; /* Altura fixa para os pôsteres */
-    object-fit: cover; /* Garante que a imagem cubra o espaço sem distorcer */
+    object-fit: 3rem; 
+    margin-top: 9px;
+    margin-right: 16px;
+    border-radius: 30px;
     }
     
 
@@ -178,7 +215,6 @@ b {
     font-size: 2rem;
     margin-bottom: 1.5rem;
     padding-left: 1rem;
-    border: 4px solid rgb(37, 31, 31);
     text-transform: uppercase;
     letter-spacing: 1px;
     
@@ -187,27 +223,48 @@ b {
 .top-rated-section {
     display: flex;
     gap: 1.5rem;
-    overflow-x: auto; /* Permite scroll horizontal em telas menores */
+    overflow-x: auto; /* Permite scroll horizontal */
     padding-bottom: 1.5rem; /* Espaço para a barra de scroll */
     margin-bottom: 3rem;
-   justify-content: center;
-    }
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    scroll-padding-left: 1.5rem; 
+}
 
 .top-rated-card {
     background-color: #222;
-    border-radius: 8px;
+    border-radius: 25px;
     overflow: hidden;
     box-shadow: 0 4px 8px rgba(0,0,0,0.5);
     min-width: 280px; /* Largura mínima do card */
     text-align: center;
-    }
+    margin-top: 20px;
+    box-shadow: 0 0 0px rgba(59, 130, 246, 0); 
+    transition: box-shadow 1000ms ease-out, 
+                transform 300ms ease-out,
+                background-color 300ms ease-out;
+  }
+    
         
 .top-rated-card img {
-    width: 100%;
-    height: 180px;
-    object-fit: scale-down;
+    border-radius: 20px;
+    object-fit: cover;
+    width: 200px;
+    height: 300px;
+    margin-left: 37px;
+    margin-top: 13px;
+    
     }
-
+.top-rated-card:hover{
+    transform: translateY(-5px);
+    box-shadow: 0 0 15px rgba(164, 164, 164, 0),
+    0 0 30px rgba(110, 110, 110, 0.274);
+    
+    
+    
+    
+    
+}
 .top-rated-info {
     padding: 1rem;
     }
@@ -217,7 +274,7 @@ b {
     margin-bottom: 0.75rem;
     }
 
-.call-to-action {
+/*.call-to-action {
     background-color: #e03131;
     color: white;
     border: none;
@@ -232,7 +289,7 @@ b {
 
 .call-to-action:hover {
     background-color: #c92a2a;
-    }
+    }*/
 
 /* --- Grade de Serviços de Streaming --- */
 .streaming-services-grid {
@@ -250,11 +307,16 @@ b {
     text-align: center;
     transition: transform 0.3s, box-shadow 0.3s;
     border: 1px solid #333;
+    object-fit: contain;
+    
     }
         
 .service-card:hover {
-    transform: translateY(-10px);
+    transform: translateY(-5px);
+    transform-origin: 2px;
+    transition-duration: 1s;
     box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+    
     }
 
 .service-card img {
@@ -262,6 +324,8 @@ b {
     width: auto;
     margin: 0 auto 1rem auto;
     object-fit: contain; /* Garante que o logo caiba sem distorcer */
+    
+                
     }
         
 .service-card .service-name {
