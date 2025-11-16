@@ -48,14 +48,23 @@ function renderTopRatedMovies(movies, container) {
         movieCard.classList.add('top-rated-card'); 
         movieCard.classList.add('neon-hover'); // Efeito neon
 
-        const rating = movie.vote_average / 2;
-        const stars = '⭐'.repeat(Math.round(rating)); 
+        
+        const rating = movie.vote_average / 2; // Converte para 0-5 (ex: 4.1)
+        const starString = generateStarRating(rating); // Chama a nova função
+        // --- FIM DA NOVA LÓGICA ---
 
         movieCard.innerHTML = `
             <img src="${IMAGE_BASE_URL}${movie.poster_path}" alt="Pôster do filme ${movie.title}">
             <div class="top-rated-info">
                 <h3>${movie.title}</h3>
-                <p class="text-yellow-400 font-bold">${stars}</p> 
+                
+                <p class="text-yellow-400 font-bold" style="font-size: 1.25rem; letter-spacing: 0.1em;">
+                    ${starString} 
+                    <span class="text-white text-sm font-normal">
+                        (${rating.toFixed(1)})
+                    </span>
+                </p> 
+                
                 <a href="assistir.html" class="inline-block bg-red-900 rounded-xl py-2 px-4 hover:bg-red-700 text-white font-bold border-transparent hover:scale-105 active:scale-95 neon-hover">
                     Saiba Onde Assistir
                 </a>
@@ -73,7 +82,7 @@ async function fetchMoviesByGenre(genreId, container) {
     try {
         const response = await fetch(url);
         const data = await response.json();
-        // Chama o renderizador CORRETO
+        
         renderGenreMovies(data.results, container);
     } catch (error) {
         console.error("Erro ao buscar filmes de Gênero:", error);
@@ -126,4 +135,19 @@ function initializeStarRatings() {
             });
         });
     });
+}
+
+
+function generateStarRating(rating) {
+    const totalStars = 5;
+    
+    const roundedRating = Math.round(rating);
+
+    const fullStars = roundedRating;
+    const emptyStars = totalStars - fullStars;
+
+    let starString = '★'.repeat(fullStars);      // Adiciona estrelas CHEIAS
+    starString += '☆'.repeat(emptyStars);     // Adiciona estrelas VAZIAS
+
+    return starString;
 }
