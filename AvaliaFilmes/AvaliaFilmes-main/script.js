@@ -165,13 +165,13 @@ function renderGenreMovies(movies, container) {
             <div class="rating-result">Nenhuma avaliação ainda.</div>
         </div>
 
-        <div class="mt-4 mt-auto"> <textarea 
+        <div class="mt-4 mt-auto text-center"> <textarea 
                 class="movie-note-input w-full bg-gray-700 text-white p-2 rounded-lg text-sm resize-none" 
                 rows="3" 
                 placeholder="Sua anotação sobre o filme..."></textarea>
 
             <button 
-                class="movie-note-save-btn inline-block bg-red-900 rounded-xl py-2 px-4 hover:bg-red-700 text-white font-bold border-transparent hover:scale-105 active:scale-95 neon-hover">
+                class="movie-note-save-btn inline-block bg-red-900 rounded-xl py-2 px-4 hover:bg-red-700 text-white font-bold border-transparent hover:scale-105 active:scale-95 neon-hover ">
                 Salvar Anotação
             </button>
 
