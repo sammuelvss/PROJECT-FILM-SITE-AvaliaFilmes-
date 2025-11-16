@@ -226,9 +226,9 @@ b {
     overflow-x: auto; /* Permite scroll horizontal */
     padding-bottom: 1.5rem; /* Espaço para a barra de scroll */
     margin-bottom: 3rem;
-    padding-left: 1.5rem;
-    padding-right: 1.5rem;
-    scroll-padding-left: 1.5rem; 
+    padding-left: 1rem;   /* 16px de "respiro" à esquerda */
+    padding-right: 1rem;  /* 16px de "respiro" no final da lista */
+    scroll-padding-left: 1rem; /* Começa a rolagem depois do respiro */
 }
 
 .top-rated-card {
