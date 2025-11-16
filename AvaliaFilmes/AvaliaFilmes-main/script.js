@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
                   <section class="mt-10 px-4 md:px-6">
                   <center><h2 class="section-title">Resultados para "${query}"</h2></center>
 
-                  <div id="search-results-container" class="search-results-container">
+                  <div id="search-results-container" class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4 mt-6">
                   </div>
                   </section> `;
                       
@@ -134,42 +134,46 @@ function renderGenreMovies(movies, container) {
         movieCard.classList.add('neon-hover'); 
         movieCard.classList.add('transition-transform'); 
         movieCard.classList.add('hover:scale-105'); 
-
+        movieCard.classList.add('flex');    
+        movieCard.classList.add('flex-col');   
         movieCard.dataset.movieId = movie.id;
 
         const cardIndex = index + 1; 
         movieCard.innerHTML = `
         <img src="${IMAGE_BASE_URL}${movie.poster_path}" alt="Pôster de ${movie.title}">
-        <div class="movie-info">
-        
-        <h3 class="text-white text-lg font-bold mb-2" title="${movie.title}">
-            ${movie.title}
-        </h3>
 
-        <div class="star-rating">
-            <input type="radio" name="rating-${cardIndex}" id="r${cardIndex}-star5" value="5"><label for="r${cardIndex}-star5">★</label>
-            <input type="radio" name="rating-${cardIndex}" id="r${cardIndex}-star4" value="4"><label for="r${cardIndex}-star4">★</label>
-            <input type="radio" name="rating-${cardIndex}" id="r${cardIndex}-star3" value="3"><label for="r${cardIndex}-star3">★</label>
-            <input type="radio" name="rating-${cardIndex}" id="r${cardIndex}-star2" value="2"><label for="r${cardIndex}-star2">★</label>
-            <input type="radio" name="rating-${cardIndex}" id="r${cardIndex}-star1" value="1"><label for="r${cardIndex}-star1">★</label>
+        <div class="movie-info flex flex-col flex-1 p-4">
+
+        <div class="mt-4 mt-auto"> 
+            <h3 class="text-white text-lg font-bold mb-2" title="${movie.title}">
+                ${movie.title}
+            </h3>
+
+            <div class="star-rating ">
+                <input type="radio" name="rating-${cardIndex}" id="r${cardIndex}-star5" value="5"><label for="r${cardIndex}-star5">★</label>
+                <input type="radio" name="rating-${cardIndex}" id="r${cardIndex}-star4" value="4"><label for="r${cardIndex}-star4">★</label>
+                <input type="radio" name="rating-${cardIndex}" id="r${cardIndex}-star3" value="3"><label for="r${cardIndex}-star3">★</label>
+                <input type="radio" name="rating-${cardIndex}" id="r${cardIndex}-star2" value="2"><label for="r${cardIndex}-star2">★</label>
+                <input type="radio" name="rating-${cardIndex}" id="r${cardIndex}-star1" value="1"><label for="r${cardIndex}-star1">★</label>
+            </div>
+            <div class="rating-result">Nenhuma avaliação ainda.</div>
         </div>
-        <div class="rating-result">Nenhuma avaliação ainda.</div>
 
-        <div class="mt-4">
-            <textarea 
-                class="movie-note-input w-full bg-gray-700 text-white p-2 rounded text-sm" 
-                rows="2" 
+        <div class="mt-4 mt-auto"> <textarea 
+                class="movie-note-input w-full bg-gray-700 text-white p-2 rounded-lg text-sm resize-none" 
+                rows="3" 
                 placeholder="Sua anotação sobre o filme..."></textarea>
-            
+
             <button 
                 class="movie-note-save-btn bg-yellow-500 text-black text-xs font-bold py-1 px-2 rounded mt-1 hover:bg-yellow-400 transition-colors">
                 Salvar Anotação
             </button>
-            
+
             <div class="movie-note-save-feedback text-green-400 text-xs mt-1" style="display: none;">
                 Anotação salva!
             </div>
         </div>
+
         </div>
         `;
         container.appendChild(movieCard);
