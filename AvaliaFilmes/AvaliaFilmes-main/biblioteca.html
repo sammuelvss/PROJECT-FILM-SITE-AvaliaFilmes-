@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="style.css">
+
+<title>Minha Biblioteca - AvaliaFILMES</title>
+
+<script src="https://cdn.tailwindcss.com"></script>
+
+<script>
+  tailwind.config = {
+    corePlugins: {
+      preflight: false
+    }
+  }
+</script>
+</head>
+<body>
+    <header class="bg-gray-100/10 border-b-2 border-gray-700">
+        <div class="container mx-auto flex items-center justify-between p-4">
+            
+            <div class="flex items-center gap-x-6 md:gap-x-10">
+                
+                <a href="index.html" class="logo flex-shrink-0">
+                    <h1 class="hover:scale-105">
+                        <span class="logo-yellow">Avalia</span><span class="logo-white">FILMES</span>
+                    </h1>
+                </a>
+
+                <nav class="genre-nav hidden md:flex"> <ul class="nav-list">
+                        <li><a href="terrorfilmes.html">Terror</a></li>
+                        <li><a href="comediafilmes.html">Comédia</a></li>
+                        <li><a href="animacaofilmes.html">Animação</a></li>
+                        <li><a href="dramafilmes.html">Drama</a></li>
+                        <li><a href="biblioteca.html">Biblioteca</a></li>
+                    </ul>
+                </nav>
+            </div>
+
+            
+        <form class="flex items-center" id="search-form">
+            <input type="text" 
+                   id="search-input" 
+                   placeholder="Buscar filmes..." 
+                   class="bg-white text-white px-4 py-2 rounded-full text-sm focus:outline-none focus:ring-2 focus:ring-gray-500 border-white w-24 md:w-48">
+            
+            <button typetype="submit" class="ml-2 p-2 rounded-lg text-black hover:bg-gray-400 ">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-
