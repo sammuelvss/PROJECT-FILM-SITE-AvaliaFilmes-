@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // --- LÓGICA DE BUSCA (NOVA) ---
     const searchForm = document.getElementById('search-form');
     const searchInput = document.getElementById('search-input');
-    const mainContent = document.getElementById('main-content'); // Pega o <main>
+    const mainContent = document.getElementById('main-content'); 
 
     if (searchForm) {
         searchForm.addEventListener('submit', (event) => {
@@ -55,6 +55,12 @@ document.addEventListener('DOMContentLoaded', () => {
     if (catalogContainer) {
         fetchPopularMovies(catalogContainer);
     }
+
+    const libraryContainer = document.getElementById('library-grid-container');
+    if (libraryContainer) {
+        loadMyLibrary(libraryContainer); 
+    }
+
 });
 
 
@@ -274,9 +280,7 @@ async function fetchPopularMovies(container) {
     }
 }
 
-/**
- * Renderiza os cards do catálogo (só o pôster).
- */
+
 function renderCatalogMovies(movies, container) {
     container.innerHTML = ''; // Limpa o container
 
@@ -285,7 +289,6 @@ function renderCatalogMovies(movies, container) {
         const movieLink = document.createElement('a');
         movieLink.href = "assistir.html"; // Link para sua página de detalhes
         
-        // Classes de estilo e transição (o pôster da sua imagem)
         movieLink.classList.add(
             'block',          
             'rounded-xl',     
@@ -305,9 +308,9 @@ function renderCatalogMovies(movies, container) {
     });
 }
 
-/**
- * Busca filmes na API com base na query do usuário.
- */
+
+  //Busca filmes na API com base na query do usuário.
+ 
 async function fetchSearchResults(query, container) {
     
     const url = `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&query=${query}&language=pt-BR&page=1`;
@@ -319,6 +322,56 @@ async function fetchSearchResults(query, container) {
 
     } catch (error) {
         console.error("Erro ao buscar filmes:", error);
+    }
+}
+
+
+
+async function loadMyLibrary(container) {
+    const ratedMovieIds = [];
+
+    
+    for (let i = 0; i < localStorage.length; i++) {
+        const key = localStorage.key(i);
+        
+        if (!isNaN(key)) {
+            ratedMovieIds.push(key);
+        }
+    }
+
+    
+    if (ratedMovieIds.length === 0) {
+        container.innerHTML = '<p class="text-center col-span-full">Você ainda não avaliou nenhum filme. Comece a avaliar nas páginas de gênero!</p>';
+        return;
+    }
+
+    
+    try {
+       
+        const moviePromises = ratedMovieIds.map(id => fetchMovieById(id));       
+        
+        const movies = await Promise.all(moviePromises);
+        
+        const validMovies = movies.filter(movie => movie && movie.id);
+     
+        renderGenreMovies(validMovies, container);
+
+    } catch (error) {
+        console.error("Erro ao carregar a biblioteca:", error);
+        container.innerHTML = '<p class="text-center col-span-full">Erro ao carregar sua biblioteca.</p>';
+    }
+}
+
+
+async function fetchMovieById(movieId) {
+    const url = `https://api.themoviedb.org/3/movie/${movieId}?api_key=${API_KEY}&language=pt-BR`;
+    try {
+        const response = await fetch(url);
+        if (!response.ok) return null; 
+        return await response.json();
+    } catch (error) {
+        console.error(`Erro ao buscar filme ${movieId}:`, error);
+        return null; 
     }
 }
 

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="style.css">
+    <title>Minha Biblioteca - AvaliaFilmes</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <script>
+      tailwind.config = {
+        corePlugins: {
+          preflight: false
+        }
+      }
+    </script>
+</head>
+<body class="bg-gray-900 text-white">
+
+    <header class="border-b border-gray-800">
+        <div class="container mx-auto flex items-center justify-between p-4">
+            
+            <div class="flex items-center gap-x-6 md:gap-x-10">
+                <a href="index.html" class="logo flex-shrink-0">
+                    <h1 class="hover:scale-105">
+                        <span class="logo-yellow">Avalia</span><span class="logo-white">FILMES</span>
+                    </h1>
+                </a>
+                <nav class="hidden md:flex"> 
+                    <ul class="flex gap-x-4">
+                        <li><a href="biblioteca.html" class="text-yellow-500 hover:text-yellow-300">Meus Filmes</a></li> 
+                        <li><a href="terrorfilmes.html" class="hover:text-yellow-500">Terror</a></li>
+                        <li><a href="comediafilmes.html" class="hover:text-yellow-500">Comédia</a></li>
+                        <li><a href="animacaofilmes.html" class="hover:text-yellow-500">Animação</a></li>
+                        <li><a href="dramafilmes.html" class="hover:text-yellow-500">Drama</a></li>
+                    </ul>
+                </nav>
+            </div>
+            </div>
+    </header>
+
+    <nav class="md:hidden border-b border-gray-800 px-4">
+        <ul class="flex justify-between p-2 text-sm">
+             <li><a href="biblioteca.html" class="text-yellow-500">Meus Filmes</a></li>
+            <li><a href="terrorfilmes.html">Terror</a></li>
+            <li><a href="comediafilmes.html">Comédia</a></li>
+            <li><a href="animacaofilmes.html">Animação</a></li>
+            <li><a href="dramafilmes.html">Drama</a></li>
+        </ul>
+    </nav>
+
+    <main id="main-content" class="px-4 md:px-6 mt-10">
+        
+        <h2 class="text-2xl font-bold text-center mb-4">Meus Filmes Avaliados</h2>
+        
+        <div id="library-grid-container" class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4 mt-6">
+            </div>
+
+    </main>
+    
+    <script src="script.js"></script>
+</body>
+</html>
