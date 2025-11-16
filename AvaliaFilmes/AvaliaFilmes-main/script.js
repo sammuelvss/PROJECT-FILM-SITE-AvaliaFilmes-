@@ -20,6 +20,11 @@ document.addEventListener('DOMContentLoaded', () => {
     if (genreGridContainer && genreId) {
         fetchMoviesByGenre(genreId, genreGridContainer);
     }
+
+    const catalogContainer = document.getElementById('catalog-grid-container');
+    if (catalogContainer) {
+        fetchPopularMovies(catalogContainer);
+    }
 });
 
 
@@ -150,4 +155,47 @@ function generateStarRating(rating) {
     starString += '☆'.repeat(emptyStars);     // Adiciona estrelas VAZIAS
 
     return starString;
+}
+
+async function fetchPopularMovies(container) {
+    // Usamos o endpoint 'popular' para o catálogo
+    const url = `https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}&language=pt-BR&page=1`;
+    try {
+        const response = await fetch(url);
+        const data = await response.json();
+        renderCatalogMovies(data.results, container); // Chama o novo renderizador
+    } catch (error) {
+        console.error("Erro ao buscar filmes Populares:", error);
+    }
+}
+
+/**
+ * Renderiza os cards do catálogo (só o pôster).
+ */
+function renderCatalogMovies(movies, container) {
+    container.innerHTML = ''; // Limpa o container
+
+    movies.forEach(movie => {
+        // Cria um link <a> que envolve a imagem
+        const movieLink = document.createElement('a');
+        movieLink.href = "assistir.html"; // Link para sua página de detalhes
+        
+        // Classes de estilo e transição (o pôster da sua imagem)
+        movieLink.classList.add(
+            'block',          
+            'rounded-xl',     
+            'overflow-hidden',
+            'transition-all', 
+            'duration-300',   
+            'hover:scale-105' 
+        );
+        
+        movieLink.innerHTML = `
+            <img src="${IMAGE_BASE_URL}${movie.poster_path}" 
+                 alt="Pôster de ${movie.title}" 
+                 class="w-full h-full object-cover">
+        `;
+        
+        container.appendChild(movieLink);
+    });
 }
