@@ -166,7 +166,7 @@ function renderGenreMovies(movies, container) {
         </div>
 
         <div class="mt-4 mt-auto text-center"> <textarea 
-                class="movie-note-input w-full bg-gray-900/15 text-white p-2 rounded-xl text-sm resize-none" 
+                class="movie-note-input w-full bg-gray-900/15 text-white p-2 rounded-full text-sm resize-none" 
                 rows="3" 
                 placeholder="Sua anotação sobre o filme..."></textarea>
 
