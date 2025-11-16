@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
                   <section class="mt-10 px-4 md:px-6">
                   <center><h2 class="section-title">Resultados para "${query}"</h2></center>
 
-                  <div id="search-results-container" class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4 mt-6">
+                  <div id="search-results-container" class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4 mt-6 hover-scale-105">
                   </div>
                   </section> `;
                       
@@ -165,7 +165,7 @@ function renderGenreMovies(movies, container) {
                 placeholder="Sua anotação sobre o filme..."></textarea>
 
             <button 
-                class="movie-note-save-btn bg-yellow-500 text-black text-xs font-bold py-1 px-2 rounded mt-1 hover:bg-yellow-400 transition-colors">
+                class="movie-note-save-btn inline-block bg-red-900 rounded-xl py-2 px-4 hover:bg-red-700 text-white font-bold border-transparent hover:scale-105 active:scale-95 neon-hover">
                 Salvar Anotação
             </button>
 
