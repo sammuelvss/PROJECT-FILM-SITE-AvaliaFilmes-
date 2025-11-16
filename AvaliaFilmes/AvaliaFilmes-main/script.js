@@ -139,20 +139,38 @@ function renderGenreMovies(movies, container) {
 
         const cardIndex = index + 1; 
         movieCard.innerHTML = `
-            <img src="${IMAGE_BASE_URL}${movie.poster_path}" alt="Pôster de ${movie.title}">
-            <div class="movie-info">
-                <h3 class="text-white text-lg font-bold mb-2 " title="${movie.title}">
-                    ${movie.title}
-                </h3>
-                <div class="star-rating">
-                    <input type="radio" name="rating-${cardIndex}" id="r${cardIndex}-star5" value="5"><label for="r${cardIndex}-star5">★</label>
-                    <input type="radio" name="rating-${cardIndex}" id="r${cardIndex}-star4" value="4"><label for="r${cardIndex}-star4">★</label>
-                    <input type="radio" name="rating-${cardIndex}" id="r${cardIndex}-star3" value="3"><label for="r${cardIndex}-star3">★</label>
-                    <input type="radio" name="rating-${cardIndex}" id="r${cardIndex}-star2" value="2"><label for="r${cardIndex}-star2">★</label>
-                    <input type="radio" name="rating-${cardIndex}" id="r${cardIndex}-star1" value="1"><label for="r${cardIndex}-star1">★</label>
-                </div>
-                <div class="rating-result">Nenhuma avaliação ainda.</div>
+        <img src="${IMAGE_BASE_URL}${movie.poster_path}" alt="Pôster de ${movie.title}">
+        <div class="movie-info">
+        
+        <h3 class="text-white text-lg font-bold mb-2" title="${movie.title}">
+            ${movie.title}
+        </h3>
+
+        <div class="star-rating">
+            <input type="radio" name="rating-${cardIndex}" id="r${cardIndex}-star5" value="5"><label for="r${cardIndex}-star5">★</label>
+            <input type="radio" name="rating-${cardIndex}" id="r${cardIndex}-star4" value="4"><label for="r${cardIndex}-star4">★</label>
+            <input type="radio" name="rating-${cardIndex}" id="r${cardIndex}-star3" value="3"><label for="r${cardIndex}-star3">★</label>
+            <input type="radio" name="rating-${cardIndex}" id="r${cardIndex}-star2" value="2"><label for="r${cardIndex}-star2">★</label>
+            <input type="radio" name="rating-${cardIndex}" id="r${cardIndex}-star1" value="1"><label for="r${cardIndex}-star1">★</label>
+        </div>
+        <div class="rating-result">Nenhuma avaliação ainda.</div>
+
+        <div class="mt-4">
+            <textarea 
+                class="movie-note-input w-full bg-gray-700 text-white p-2 rounded text-sm" 
+                rows="2" 
+                placeholder="Sua anotação sobre o filme..."></textarea>
+            
+            <button 
+                class="movie-note-save-btn bg-yellow-500 text-black text-xs font-bold py-1 px-2 rounded mt-1 hover:bg-yellow-400 transition-colors">
+                Salvar Anotação
+            </button>
+            
+            <div class="movie-note-save-feedback text-green-400 text-xs mt-1" style="display: none;">
+                Anotação salva!
             </div>
+        </div>
+        </div>
         `;
         container.appendChild(movieCard);
     });
@@ -167,18 +185,23 @@ function initializeStarRatings() {
     const movieCards = document.querySelectorAll('.movie-card');
     
     movieCards.forEach(card => {
+        
         const stars = card.querySelectorAll('.star-rating input');
         const resultText = card.querySelector('.rating-result');
+        const movieId = card.dataset.movieId; // ID do filme
         
-        const movieId = card.dataset.movieId; 
+        const noteInput = card.querySelector('.movie-note-input');
+        const noteSaveBtn = card.querySelector('.movie-note-save-btn');
+        const noteFeedback = card.querySelector('.movie-note-save-feedback');
+        
+       
+        const noteKey = `note_${movieId}`; 
+
         
         const savedRating = localStorage.getItem(movieId); 
-
         if (savedRating) {
-                       
             const starText = savedRating > 1 ? 'estrelas' : 'estrela';
             resultText.textContent = `Sua avaliação: ${savedRating} ${starText}.`;
-                        
             const savedRadio = card.querySelector(`input[value="${savedRating}"]`);
             if (savedRadio) {
                 savedRadio.checked = true;
@@ -186,13 +209,30 @@ function initializeStarRatings() {
         }
         stars.forEach(star => {
             star.addEventListener('click', () => {
-                const ratingValue = star.value; 
-
+                const ratingValue = star.value;
                 const starText = ratingValue > 1 ? 'estrelas' : 'estrela';
                 resultText.textContent = `Sua avaliação: ${ratingValue} ${starText}.`;
-                
-                localStorage.setItem(movieId, ratingValue);
+                localStorage.setItem(movieId, ratingValue); // Salva a estrela
             });
+        });
+
+        
+        //  Carrega a anotação salva ao carregar a página
+        const savedNote = localStorage.getItem(noteKey);
+        if (savedNote) {
+            noteInput.value = savedNote;
+        }
+
+        //  Salva a anotação ao clicar no botão
+        noteSaveBtn.addEventListener('click', () => {
+            const noteText = noteInput.value;
+            localStorage.setItem(noteKey, noteText); // Salva a anotação
+
+            // Mostra o feedback "Anotação salva!" por 2 segundos
+            noteFeedback.style.display = 'block';
+            setTimeout(() => {
+                noteFeedback.style.display = 'none';
+            }, 2000);
         });
     });
 }
