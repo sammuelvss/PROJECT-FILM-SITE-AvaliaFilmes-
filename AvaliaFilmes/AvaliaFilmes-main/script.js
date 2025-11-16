@@ -89,7 +89,12 @@ function renderTopRatedMovies(movies, container) {
         const starString = generateStarRating(rating); // Chama a nova função
        
         movieCard.innerHTML = `
-            <img src="${IMAGE_BASE_URL}${movie.poster_path}" alt="Pôster do filme ${movie.title}">
+            
+        <img src="${IMAGE_BASE_URL}${movie.poster_path}" 
+        alt="Pôster de ${movie.title}"
+        class="w-full object-cover flex-shrink-0"> 
+
+        <div class="movie-info flex flex-col flex-1 p-4"></div>
             <div class="top-rated-info">
                 <h3>${movie.title}</h3>
                 
