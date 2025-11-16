@@ -255,14 +255,10 @@ b {
     margin-top: 13px;
     
     }
-.top-rated-card:hover{
+.neon-hover:hover{
     transform: translateY(-5px);
     box-shadow: 0 0 15px rgba(164, 164, 164, 0),
-    0 0 30px rgba(110, 110, 110, 0.274);
-    
-    
-    
-    
+    0 0 30px rgba(110, 110, 110, 0.274); 
     
 }
 .top-rated-info {
