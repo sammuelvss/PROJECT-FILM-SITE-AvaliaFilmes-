@@ -99,10 +99,11 @@ function renderTopRatedMovies(movies, container) {
                         (${rating.toFixed(1)})
                     </span>
                 </p> 
-                
+                <div class="py-4">
                 <a href="assistir.html" class="inline-block bg-red-900 rounded-xl py-2 px-4 hover:bg-red-700 text-white font-bold border-transparent hover:scale-105 active:scale-95 neon-hover">
                     Saiba Onde Assistir
                 </a>
+                </div>
             </div>
         `;
         container.appendChild(movieCard);
