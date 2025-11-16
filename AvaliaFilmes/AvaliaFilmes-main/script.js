@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
                   <section class="mt-10 px-4 md:px-6">
                   <center><h2 class="section-title">Resultados para "${query}"</h2></center>
 
-                  <div id="search-results-container" class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4 mt-6 hover-scale-105">
+                  <div id="search-results-container" class="grid grid-cols-1 md:grid-cols-4 lg:grid-cols-5 gap-4 mt-6 hover-scale-105">
                   </div>
                   </section> `;
                       
