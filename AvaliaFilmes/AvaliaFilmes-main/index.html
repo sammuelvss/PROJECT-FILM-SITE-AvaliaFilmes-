@@ -16,58 +16,65 @@
 <body>
 
     <header class="main-header">
-    <div class="bg-gray-400/15 rounded-full shadow-white-500 shadow-xl e hover:shadow-xl">
-    <div class="container mx-auto flex items-center justify-between p-4">
-        
-        <div class="flex items-center gap-x-6 md:gap-x-10"> <a href="index.html" class="logo flex-shrink-0"> <h1 class="hover:scale-105">
-                    <span class="logo-yellow">Avalia</span><span class="logo-white">FILMES</span>
-                </h1>
-            </a>
-
-            <nav class="genre-nav hidden md:flex">
-                <ul class="nav-list">
-                    <li><a href="terrorfilmes.html">Terror</a></li>
-                    <li><a href="comediafilmes.html">Comédia</a></li>
-                    <li><a href="animacaofilmes.html">Animação</a></li>
-                    <li><a href="dramafilmes.html">Drama</a></li>
-                </ul>
-            </nav>
-        </div>
-        <div class="bg-gray-500/15 rounded-full ml-10 p-4 md:gap-x-10 ">
-        <form class="flex items-center" id="search-form">
-            <input type="text" 
-                   id="search-input" 
-                   placeholder="Buscar filmes..." 
-                   class="bg-white text-white px-4 py-2 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-gray-500 border-white">
+        <div class="container mx-auto flex items-center justify-between p-4">
             
-            <button typetype="submit" class="ml-2 p-2 rounded-lg text-black hover:bg-gray-400 ">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                    <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd" />
-                </svg>
-            </button>
-        </form>
-    </div>
-    </div>
-    </div>
-</header>
+            <div class="flex items-center gap-x-6 md:gap-x-10">
+                
+                <a href="index.html" class="logo flex-shrink-0">
+                    <h1 class="hover:scale-105">
+                        <span class="logo-yellow">Avalia</span><span class="logo-white">FILMES</span>
+                    </h1>
+                </a>
+
+                <nav class="genre-nav hidden md:flex"> <ul class="nav-list">
+                        <li><a href="terrorfilmes.html">Terror</a></li>
+                        <li><a href="comediafilmes.html">Comédia</a></li>
+                        <li><a href="animacaofilmes.html">Animação</a></li>
+                        <li><a href="dramafilmes.html">Drama</a></li>
+                    </ul>
+                </nav>
+            </div>
+
+            <form class="flex items-center" id="search-form">
+                <input type="text" 
+                       id="search-input" 
+                       placeholder="Buscar filmes..." 
+                       class="bg-gray-700 text-white px-4 py-2 rounded-full text-sm focus:outline-none focus:ring-2 focus:ring-yellow-500">
+                
+                <button type="submit" class="ml-2 p-2 rounded-full text-white hover:bg-gray-700">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd" />
+                    </svg>
+                </button>
+            </form>
+            
+        </div>
+    </header>
+
+    <nav class="genre-nav md:hidden">
+        <ul class="nav-list justify-center">
+            <li><a href="terrorfilmes.html">Terror</a></li>
+            <li><a href="comediafilmes.html">Comédia</a></li>
+            <li><a href="animacaofilmes.html">Animação</a></li>
+            <li><a href="dramafilmes.html">Drama</a></li>
+        </ul>
+    </nav>
 
     <main id="main-content">
-        <!-- Seção de Melhores Avaliações -->
-       <section>
+        <section>
         <center> <h2 class="section-title">Melhores Avaliações</h2></center>
     
         <div class="top-rated-section" id="top-rated-container">
-        </div>
+            </div>
        </section>
 
-        <!-- Seção do Catálogo Geral -->
         <section class="mt-10 px-4 md:px-6"> 
     
-    <center><h2 class="section-title">EXPLORE NOSSO CATÁLOGO</h2></center>
+            <center><h2 class="section-title">EXPLORE NOSSO CATÁLOGO</h2></center>
+            
+            <div id="catalog-grid-container" class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4 mt-6">
+                </div>
     
-    <div id="catalog-grid-container" class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4 mt-6">
-        </div>
-        
         </section>
     </main>
     
