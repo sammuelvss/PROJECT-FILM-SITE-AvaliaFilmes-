@@ -82,12 +82,12 @@ function renderTopRatedMovies(movies, container) {
         const movieCard = document.createElement('div');
         movieCard.classList.add('top-rated-card'); 
         movieCard.classList.add('neon-hover'); // Efeito neon
-
+        movieCard.classList.add('flex-shrink-0'); // Impede o card de "encolher"
+        movieCard.classList.add('w-64');
         
         const rating = movie.vote_average / 2; // Converte para 0-5 (ex: 4.1)
         const starString = generateStarRating(rating); // Chama a nova função
-        // --- FIM DA NOVA LÓGICA ---
-
+       
         movieCard.innerHTML = `
             <img src="${IMAGE_BASE_URL}${movie.poster_path}" alt="Pôster do filme ${movie.title}">
             <div class="top-rated-info">
