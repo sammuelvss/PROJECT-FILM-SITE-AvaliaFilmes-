@@ -7,6 +7,36 @@ const IMAGE_BASE_URL = 'https://image.tmdb.org/t/p/w500';
 
 document.addEventListener('DOMContentLoaded', () => {
     
+  // --- LÓGICA DE BUSCA (NOVA) ---
+    const searchForm = document.getElementById('search-form');
+    const searchInput = document.getElementById('search-input');
+    const mainContent = document.getElementById('main-content'); // Pega o <main>
+
+    if (searchForm) {
+        searchForm.addEventListener('submit', (event) => {
+            event.preventDefault(); 
+            const query = searchInput.value; 
+
+            if (query) {
+                
+                mainContent.innerHTML = ''; 
+                 
+                  mainContent.innerHTML = `
+                  <section class="mt-10 px-4 md:px-6">
+                  <center><h2 class="section-title">Resultados para "${query}"</h2></center>
+
+                  <div id="search-results-container" class="search-results-container">
+                  </div>
+                  </section> `;
+                      
+
+                    
+                const resultsContainer = document.getElementById('search-results-container');
+                fetchSearchResults(query, resultsContainer);
+            }
+        });
+    }
+
     const topRatedContainer = document.getElementById('top-rated-container');
     
     if (topRatedContainer) {
@@ -102,11 +132,15 @@ function renderGenreMovies(movies, container) {
         const movieCard = document.createElement('div');
         movieCard.classList.add('movie-card');
         
+        movieCard.classList.add('neon-hover'); 
+        movieCard.classList.add('transition-transform'); 
+        movieCard.classList.add('hover:scale-105'); 
+
         const cardIndex = index + 1; 
         movieCard.innerHTML = `
             <img src="${IMAGE_BASE_URL}${movie.poster_path}" alt="Pôster de ${movie.title}">
             <div class="movie-info">
-                <h3 class="text-white text-lg font-bold mb-2 truncate" title="${movie.title}">
+                <h3 class="text-white text-lg font-bold mb-2 " title="${movie.title}">
                     ${movie.title}
                 </h3>
                 <div class="star-rating">
@@ -199,3 +233,21 @@ function renderCatalogMovies(movies, container) {
         container.appendChild(movieLink);
     });
 }
+
+/**
+ * Busca filmes na API com base na query do usuário.
+ */
+async function fetchSearchResults(query, container) {
+    
+    const url = `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&query=${query}&language=pt-BR&page=1`;
+    try {
+        const response = await fetch(url);
+        const data = await response.json();
+        
+        renderGenreMovies(data.results, container);
+
+    } catch (error) {
+        console.error("Erro ao buscar filmes:", error);
+    }
+}
+
