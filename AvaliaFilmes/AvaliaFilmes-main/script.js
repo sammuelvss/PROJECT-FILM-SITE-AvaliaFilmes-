@@ -151,7 +151,7 @@ function renderGenreMovies(movies, container) {
         <div class="movie-info flex flex-col flex-1 p-4">
 
         <div class="mt-4 mt-auto"> 
-            <h3 class="text-white text-lg font-bold mb-2" title="${movie.title}">
+            <h3 class="text-white text-lg font-bold mb-2 text-center" title="${movie.title}">
                 ${movie.title}
             </h3>
 
@@ -166,7 +166,7 @@ function renderGenreMovies(movies, container) {
         </div>
 
         <div class="mt-4 mt-auto text-center"> <textarea 
-                class="movie-note-input w-full bg-gray-700 text-white p-2 rounded-lg text-sm resize-none" 
+                class="movie-note-input w-full bg-gray-900/15 text-white p-2 rounded-xl text-sm resize-none" 
                 rows="3" 
                 placeholder="Sua anotação sobre o filme..."></textarea>
 
