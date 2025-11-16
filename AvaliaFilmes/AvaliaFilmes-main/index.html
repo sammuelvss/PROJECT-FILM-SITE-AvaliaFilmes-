@@ -16,6 +16,7 @@
 <body>
 
     <header class="main-header">
+    <div class="bg-gray-400/15 rounded-full shadow-white-500 shadow-xl e hover:shadow-xl">
     <div class="container mx-auto flex items-center justify-between p-4">
         
         <div class="flex items-center gap-x-6 md:gap-x-10"> <a href="index.html" class="logo flex-shrink-0"> <h1 class="hover:scale-105">
@@ -32,19 +33,20 @@
                 </ul>
             </nav>
         </div>
-        <div class="bg-gray-900 rounded-full ml-10 p-4 md:gap-x-10 ">
+        <div class="bg-gray-500/15 rounded-full ml-10 p-4 md:gap-x-10 ">
         <form class="flex items-center" id="search-form">
             <input type="text" 
                    id="search-input" 
                    placeholder="Buscar filmes..." 
-                   class="bg-gray-700 text-white px-4 py-2 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-yellow-500">
+                   class="bg-white text-white px-4 py-2 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-yellow-500 border-white">
             
-            <button typetype="submit" class="ml-2 p-2 rounded-lg text-black hover:bg-gray-700">
+            <button typetype="submit" class="ml-2 p-2 rounded-lg text-black hover:bg-gray-400 ">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
                     <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd" />
                 </svg>
             </button>
         </form>
+    </div>
     </div>
     </div>
 </header>
