@@ -131,10 +131,11 @@ function renderGenreMovies(movies, container) {
     movies.forEach((movie, index) => {
         const movieCard = document.createElement('div');
         movieCard.classList.add('movie-card');
-        
         movieCard.classList.add('neon-hover'); 
         movieCard.classList.add('transition-transform'); 
         movieCard.classList.add('hover:scale-105'); 
+
+        movieCard.dataset.movieId = movie.id;
 
         const cardIndex = index + 1; 
         movieCard.innerHTML = `
@@ -160,17 +161,37 @@ function renderGenreMovies(movies, container) {
     initializeStarRatings();
 }
 
+
+
 function initializeStarRatings() {
     const movieCards = document.querySelectorAll('.movie-card');
+    
     movieCards.forEach(card => {
         const stars = card.querySelectorAll('.star-rating input');
         const resultText = card.querySelector('.rating-result');
+        
+        const movieId = card.dataset.movieId; 
+        
+        const savedRating = localStorage.getItem(movieId); 
 
+        if (savedRating) {
+                       
+            const starText = savedRating > 1 ? 'estrelas' : 'estrela';
+            resultText.textContent = `Sua avaliação: ${savedRating} ${starText}.`;
+                        
+            const savedRadio = card.querySelector(`input[value="${savedRating}"]`);
+            if (savedRadio) {
+                savedRadio.checked = true;
+            }
+        }
         stars.forEach(star => {
             star.addEventListener('click', () => {
-                const ratingValue = star.value;
+                const ratingValue = star.value; 
+
                 const starText = ratingValue > 1 ? 'estrelas' : 'estrela';
                 resultText.textContent = `Sua avaliação: ${ratingValue} ${starText}.`;
+                
+                localStorage.setItem(movieId, ratingValue);
             });
         });
     });
