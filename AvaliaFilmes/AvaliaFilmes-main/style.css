@@ -9,7 +9,7 @@ body {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     background-color: #141414; /* Fundo escuro, estilo streaming */
     color: #ffffff;
-    overflow-x: hidden;
+    
     }
 
 a {
@@ -45,26 +45,21 @@ img {
         background: #a44646; 
       }
         /* --- Cabeçalho e Navegação --- */
-.main-header {
-    background-color: #000000;
-    padding: 1rem 2rem;
-    border-bottom: 3px solid rgba(244, 244, 244, 0.315);
-    }
 
-.main-header .logo h1 {
+
+    .logo h1 {
     font-size: 1.75rem;
     font-weight: bold;
-    text-align: center;
+    
     }
 
-.main-header .logo .logo-yellow {
-    color: #f9f355;
+    .logo .logo-yellow {
+     color: #f9f355;
     }
 
-.main-header .logo .logo-white {
+    .logo .logo-white {
     color: #ffffff;
     }
-
         /* --- Menu de Gêneros --- */
 .genre-nav {
     background-color: #1f1f1f00;
@@ -73,23 +68,21 @@ img {
     }
 
 .genre-nav .nav-list {
-    display: flex; /* Usa flexbox para alinhar os itens */
-    justify-content: center; /* Centraliza os itens no container */
-    gap: 2rem; /* Espaçamento entre os itens */
+    display: flex; 
+    justify-content: center; 
+    gap: 2rem; 
     font-size: 1rem;
     font-weight: 600;
     text-transform: uppercase;
-    }
+ }
         
 .genre-nav .nav-list a:hover,
 .genre-nav .nav-list a.active {
     color: #f9f355; /* Cor de destaque ao passar o mouse ou na página ativa */
     }
         
-        /* --- Conteúdo Principal --- */
-main {
-    padding: 2rem 1rem; /* Espaçamento interno */
-    }
+    
+
 
 .page-title {
     text-align: center;
@@ -100,17 +93,7 @@ main {
     }
 
         /* --- Grade de Filmes --- */
-.movies-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); /* Grade responsiva */
-    gap: 1.5rem;
-    max-width: 1200px;
-    margin: 0 auto; /* Centraliza a grade */
-    opacity: 0,8;
-    transition: 0.9s;
-    border-radius: 30px;
-    
-    }
+
 
     .movies-grid img {
     width: 100%;
@@ -215,21 +198,11 @@ b {
 .section-title {
     font-size: 2rem;
     margin-bottom: 1.5rem;
-    padding-left: 1rem;
     text-transform: uppercase;
     letter-spacing: 1px;
     
     }
 
-.top-rated-section {
-    display: flex;
-    gap: 1.5rem;
-    overflow-x: auto; /* Permite scroll horizontal */
-    padding-bottom: 1.5rem; /* Espaço para a barra de scroll */
-    margin-bottom: 3rem;
-
-   
-}
 
 .top-rated-card {
     background-color: #222;
