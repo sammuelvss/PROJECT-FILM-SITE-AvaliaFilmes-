@@ -181,6 +181,7 @@ b {
     color: #aaa;
     height: 1.2rem; /* Altura fixa para não "pular" o layout */
     text-align: center;
+    padding-block-end: 40px;
     }
 
 /* --- Rodapé --- */

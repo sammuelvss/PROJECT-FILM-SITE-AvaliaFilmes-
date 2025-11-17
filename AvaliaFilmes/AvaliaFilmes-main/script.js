@@ -169,15 +169,16 @@ function renderGenreMovies(movies, container) {
                 <input type="radio" name="rating-${cardIndex}" id="r${cardIndex}-star1" value="1"><label for="r${cardIndex}-star1">★</label>
             </div>
             <div class="rating-result">Nenhuma avaliação ainda.</div>
-        </div>
 
+        </div>
+        <div class="bg-gray-500/10 rounded-full p-7">
         <div class="mt-4 mt-auto text-center"> <textarea 
-                class="movie-note-input w-full bg-gray-900/15 text-white p-2 rounded-full text-sm resize-none" 
+                class="movie-note-input w-full bg-gray-400/10 neon-hover transition-transform text-white p-1 rounded-xl text-sm resize-none border-none" 
                 rows="3" 
                 placeholder="Sua anotação sobre o filme..."></textarea>
 
             <button 
-                class="movie-note-save-btn inline-block bg-red-900 rounded-xl py-2 px-4 hover:bg-red-700 text-white font-bold border-transparent hover:scale-105 active:scale-95 neon-hover ">
+                class="movie-note-save-btn inline-block bg-red-900 rounded-xl items-end py-2 px-4 hover:bg-red-700 text-white font-bold border-transparent hover:scale-105 active:scale-95 neon-hover ">
                 Salvar Anotação
             </button>
 
@@ -185,7 +186,7 @@ function renderGenreMovies(movies, container) {
                 Anotação salva!
             </div>
         </div>
-
+        </div>
         </div>
         `;
         container.appendChild(movieCard);
