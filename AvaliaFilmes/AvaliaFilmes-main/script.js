@@ -58,9 +58,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const libraryContainer = document.getElementById('library-grid-container');
     if (libraryContainer) {
-        loadMyLibrary(libraryContainer); 
+        loadLibraryMovies();
     }
-
 });
 
 
@@ -137,9 +136,11 @@ async function fetchMoviesByGenre(genreId, container) {
 }
 
 
-function renderGenreMovies(movies, container) {
-    container.innerHTML = ''; 
-
+function renderGenreMovies(movies, container, shouldAppend = false) {
+    
+    if (!shouldAppend) {
+        container.innerHTML = ''; 
+    }
     movies.forEach((movie, index) => {
         const movieCard = document.createElement('div');
         movieCard.classList.add('movie-card');
@@ -229,7 +230,9 @@ function initializeStarRatings() {
                 const ratingValue = star.value;
                 const starText = ratingValue > 1 ? 'estrelas' : 'estrela';
                 resultText.textContent = `Sua avaliação: ${ratingValue} ${starText}.`;
+
                 localStorage.setItem(movieId, ratingValue); // Salva a estrela
+                localStorage.setItem(`time_${movieId}`, Date.now());
             });
         });
 
@@ -243,7 +246,9 @@ function initializeStarRatings() {
         //  Salva a anotação ao clicar no botão
         noteSaveBtn.addEventListener('click', () => {
             const noteText = noteInput.value;
+
             localStorage.setItem(noteKey, noteText); // Salva a anotação
+            localStorage.setItem(`time_${movieId}`, Date.now());
 
             // Mostra o feedback "Anotação salva!" por 2 segundos
             noteFeedback.style.display = 'block';
@@ -327,43 +332,6 @@ async function fetchSearchResults(query, container) {
 }
 
 
-
-async function loadMyLibrary(container) {
-    const ratedMovieIds = [];
-
-    
-    for (let i = 0; i < localStorage.length; i++) {
-        const key = localStorage.key(i);
-        
-        if (!isNaN(key)) {
-            ratedMovieIds.push(key);
-        }
-    }
-
-    
-    if (ratedMovieIds.length === 0) {
-        container.innerHTML = '<p class="text-center col-span-full">Você ainda não avaliou nenhum filme. Comece a avaliar nas páginas de gênero!</p>';
-        return;
-    }
-
-    
-    try {
-       
-        const moviePromises = ratedMovieIds.map(id => fetchMovieById(id));       
-        
-        const movies = await Promise.all(moviePromises);
-        
-        const validMovies = movies.filter(movie => movie && movie.id);
-     
-        renderGenreMovies(validMovies, container);
-
-    } catch (error) {
-        console.error("Erro ao carregar a biblioteca:", error);
-        container.innerHTML = '<p class="text-center col-span-full">Erro ao carregar sua biblioteca.</p>';
-    }
-}
-
-
 async function fetchMovieById(movieId) {
     const url = `https://api.themoviedb.org/3/movie/${movieId}?api_key=${API_KEY}&language=pt-BR`;
     try {
@@ -376,3 +344,71 @@ async function fetchMovieById(movieId) {
     }
 }
 
+
+/* * ========================================
+ * FUNÇÕES DA BIBLIOTECA (ORDEM DE SALVAMENTO)
+ * ========================================
+ */
+
+// Adicione isso ao seu 'document.addEventListener' lá no topo do arquivo:
+// if (document.getElementById('library-grid-container')) {
+//     loadLibraryMovies();
+// }
+
+async function loadLibraryMovies() {
+    const container = document.getElementById('library-grid-container');
+    if (!container) return;
+
+    // 1. Descobrir quais filmes estão salvos
+    let savedMovies = [];
+
+    // Percorre tudo no localStorage
+    for (let i = 0; i < localStorage.length; i++) {
+        const key = localStorage.key(i);
+
+        // Se a chave for APENAS números (ex: "550"), é um ID de filme avaliado
+        if (!isNaN(key) && !key.includes('_') && !key.includes('time')) {
+            const movieId = key;
+            // Pega o tempo salvo (ou 0 se for um filme antigo sem tempo salvo)
+            const timestamp = localStorage.getItem(`time_${movieId}`) || 0;
+            
+            savedMovies.push({
+                id: movieId,
+                time: parseInt(timestamp)
+            });
+        }
+    }
+
+    // 2. ORDENAR: O mais recente (maior tempo) primeiro
+    savedMovies.sort((a, b) => b.time - a.time);
+
+    // 3. Buscar detalhes e desenhar (na ordem certa)
+    container.innerHTML = ''; // Limpa antes de começar
+    
+    // Usamos um loop 'for...of' para manter a ordem da busca
+    for (const item of savedMovies) {
+        await fetchMovieById(item.id, container);
+    }
+    
+    // Se não tiver filmes
+    if (savedMovies.length === 0) {
+        container.innerHTML = '<p class="text-white text-center col-span-full">Você ainda não avaliou nenhum filme.</p>';
+    }
+}
+
+// Função auxiliar para buscar UM filme pelo ID
+async function fetchMovieById(movieId, container) {
+    const url = `https://api.themoviedb.org/3/movie/${movieId}?api_key=${API_KEY}&language=pt-BR`;
+    
+    try {
+        const response = await fetch(url);
+        const movie = await response.json();
+        
+        // Reusa sua função existente para criar o card!
+        // Criamos um array de 1 item para aproveitar a função renderGenreMovies
+        renderGenreMovies([movie], container, true); // O 'true' é um truque para NÃO limpar o container
+        
+    } catch (error) {
+        console.error("Erro ao carregar filme da biblioteca:", error);
+    }
+}
