@@ -45,7 +45,22 @@ img {
         background: #a44646; 
       }
         /* --- Cabeçalho e Navegação --- */
+            /* Esconde a barra de rolagem mas mantém a funcionalidade de scroll */
+    .no-scrollbar::-webkit-scrollbar {
+        display: none;
+    }
 
+    .no-scrollbar {
+     -ms-overflow-style: none;  /* IE and Edge */
+     scrollbar-width: none;  /* Firefox */
+    }
+
+    /* Garante que o container não quebre os cards para baixo */
+    #top-rated-container {
+        display: flex;
+        flex-wrap: nowrap;
+        -webkit-overflow-scrolling: touch;
+    }
 
     .logo h1 {
     font-size: 1.75rem;
