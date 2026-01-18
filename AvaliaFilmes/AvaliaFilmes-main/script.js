@@ -57,7 +57,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- LÓGICA DO CARROSSEL ---
     const container = document.getElementById('top-rated-container');
     const prevBtn = document.getElementById('left-btn');
-    const nextBtn = document.getElementById('rigth-btn');
+    const nextBtn = document.getElementById('right-btn');
 
     if (container && prevBtn && nextBtn) {
         // Define quanto o carrossel vai pular a cada clique (ex: 300px)

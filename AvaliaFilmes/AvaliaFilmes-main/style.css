@@ -232,8 +232,17 @@ b {
     transition: box-shadow 1000ms ease-out, 
                 transform 300ms ease-out,
                 background-color 300ms ease-out;
+    scroll-snap-align: center; /* Centraliza o card ao rolar no mobile */
+    flex-shrink: 0;
+    width: 280px; /* Tamanho fixo para manter a proporção */
+
   }
     
+  @media (max-width: 768px) {
+    .top-rated-card {
+        width: 70vw; /* No celular, ocupa 70% da largura da tela */
+    }
+}
         
 .top-rated-card img {
     border-radius: 20px;
@@ -334,3 +343,6 @@ b {
   
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
 }*/
+
+
+
