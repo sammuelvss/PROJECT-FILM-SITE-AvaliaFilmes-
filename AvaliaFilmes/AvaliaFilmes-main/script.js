@@ -4,16 +4,16 @@ const IMAGE_BASE_URL = 'https://image.tmdb.org/t/p/w500';
 
 // === PONTO DE ENTRADA PRINCIPAL ===
 document.addEventListener('DOMContentLoaded', () => {
-    
+
     // 1. Lógica de Busca
     const searchForm = document.getElementById('search-form');
     const searchInput = document.getElementById('search-input');
-    const mainContent = document.getElementById('main-content'); 
+    const mainContent = document.getElementById('main-content');
 
     if (searchForm) {
         searchForm.addEventListener('submit', (event) => {
-            event.preventDefault(); 
-            const query = searchInput.value; 
+            event.preventDefault();
+            const query = searchInput.value;
 
             if (query) {
                 mainContent.innerHTML = `
@@ -52,6 +52,30 @@ document.addEventListener('DOMContentLoaded', () => {
     const libraryContainer = document.getElementById('library-grid-container');
     if (libraryContainer) {
         loadLibraryMovies();
+    }
+
+    // --- LÓGICA DO CARROSSEL ---
+    const container = document.getElementById('top-rated-container');
+    const prevBtn = document.getElementById('prev-btn');
+    const nextBtn = document.getElementById('next-btn');
+
+    if (container && prevBtn && nextBtn) {
+        // Define quanto o carrossel vai pular a cada clique (ex: 300px)
+        const scrollAmount = 300;
+
+        nextBtn.addEventListener('click', () => {
+            container.scrollBy({
+                left: scrollAmount,
+                behavior: 'smooth'
+            });
+        });
+
+        prevBtn.addEventListener('click', () => {
+            container.scrollBy({
+                left: -scrollAmount,
+                behavior: 'smooth'
+            });
+        });
     }
 });
 
