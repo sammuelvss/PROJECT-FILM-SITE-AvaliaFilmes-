@@ -195,34 +195,32 @@ function renderGenreMovies(movies, container, shouldAppend = false) {
 
                              <div class="rating-result">Nenhuma avaliação ainda.</div>
                       </div>
-                      `;
 
-           <div class="bg-gray-500/10 rounded-full p-7">
+                      <div class="bg-gray-500/10 rounded-full p-7">
 
-           <div class="mt-4 mt-auto text-center"> <textarea
-                      class="movie-note-input w-full bg-gray-400/10 neon-hover transition-transform text-white p-1 rounded-xl text-sm resize-none border-none"
-                      rows="3"
-                      placeholder="Sua anotação sobre o filme..."></textarea>
+                          <div class="mt-4 mt-auto text-center">
+                              <textarea
+                                  class="movie-note-input w-full bg-gray-400/10 neon-hover transition-transform text-white p-1 rounded-xl text-sm resize-none border-none"
+                                  rows="3"
+                                  placeholder="Sua anotação sobre o filme..."></textarea>
 
-                  <button
-                      class="movie-note-save-btn inline-block bg-red-900 rounded-xl items-end py-2 px-4 hover:bg-red-700 text-white font-bold border-transparent hover:scale-105 active:scale-95 neon-hover ">
-                      Salvar Anotação
-                  </button>
+                              <button
+                                  class="movie-note-save-btn inline-block bg-red-900 rounded-xl items-end py-2 px-4 hover:bg-red-700 text-white font-bold border-transparent hover:scale-105 active:scale-95 neon-hover">
+                                  Salvar Anotação
+                              </button>
 
-                  <button
-                  class="movie-remove-btn inline-block bg-red-900 rounded-xl items-end py-2 px-4 hover:bg-red-700 text-white font-bold border-transparent hover:scale-105 active:scale-95 neon-hover ">
-                  X
-                  </button>
+                              <button
+                                  class="movie-remove-btn inline-block bg-red-900 rounded-xl items-end py-2 px-4 hover:bg-red-700 text-white font-bold border-transparent hover:scale-105 active:scale-95 neon-hover">
+                                  X
+                              </button>
 
-                  <div class="movie-note-save-feedback text-green-400 text-xs mt-1" style="display: none;">
-                      Anotação salva!
+                              <div class="movie-note-save-feedback text-green-400 text-xs mt-1" style="display: none;">
+                                  Anotação salva!
+                              </div>
+                          </div>
+                      </div>
                   </div>
-
-           </div>
-           </div>
-           </div>
            `;
-           container.appendChild(movieCard);
     });
     
     // Ativa a lógica dos botões
