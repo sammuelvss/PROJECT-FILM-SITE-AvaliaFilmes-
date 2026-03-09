@@ -221,6 +221,7 @@ function renderGenreMovies(movies, container, shouldAppend = false) {
                       </div>
                   </div>
            `;
+           container.appendChild(movieCard);
     });
     
     // Ativa a lógica dos botões
