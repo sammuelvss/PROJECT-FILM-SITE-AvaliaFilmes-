@@ -170,7 +170,7 @@ function renderGenreMovies(movies, container, shouldAppend = false) {
 
     movies.forEach((movie) => { 
            const movieCard = document.createElement('div');
-           movieCard.classList.add('movie-card', 'neon-hover', 'transition-transform', 'hover:scale-105', 'flex', 'flex-col', 'bg-gray-800/1', 'rounded-xll', 'overflow-hidden');
+           movieCard.classList.add('movie-card', 'neon-hover', 'transition-transform', 'hover:scale-105', 'flex', 'flex-col', 'bg-gray-800/10', 'rounded-xl', 'overflow-hidden');
            movieCard.dataset.movieId = movie.id;
 
            // USANDO O ID DO FILME PARA GARANTIR QUE SEJA ÚNICO
